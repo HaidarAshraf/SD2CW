@@ -1,17 +1,31 @@
 import java.util.Scanner;
 
 public class Theatre{
-    public static void main(String[] args){
+    static int[] rowone = new int[12];
+    static int[] rowtwo = new int[16];
+    static int[] rowthree = new int[20];
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the New Theatre");
-        int[] row1 = new int[12];
-        int[] row2 = new int[16];
-        int[] row3 = new int[20];
+
+        // setting all seats to 0/free
+        for (int i = 0; i < rowone.length; i++) {
+            rowone[i] = 0;
+        }
+        for (int i = 0; i < rowtwo.length; i++) {
+            rowtwo[i] = 0;
+        }
+        for (int i = 0; i < rowthree.length; i++) {
+            rowthree[i] = 0;
+        }
+        //calling menu which asks for users choice
         menu();
 
     }
     private static void menu(){
         Scanner input = new Scanner(System.in);
-        String divider = "-------------------------------------------------------------------------------------";
+        String divider = "------------------------------------------------------------------------";
         System.out.println(divider);
         System.out.println("Please select an option:");
         System.out.println("1) Buy a ticket");
@@ -29,13 +43,16 @@ public class Theatre{
 
         while(choice != 0){
             switch(choice){
+                case 0:
+                    System.out.println("Exiting program");
+                    return;
                 case 1:
                     System.out.println("You chose to buy a ticket");
                     buyticket();
                     break;
                 case 2:
                     System.out.println("You chose to Print the Seating Area");
-                    // self def print the seating area 
+                    printseatingarea();
                     break;
                 case 3:
                     System.out.println("You chose to Cancel your ticket ");
@@ -63,27 +80,45 @@ public class Theatre{
                     break;
             default:
                 System.out.println("Invalid Choice");
-
+                break;
             }
-
         }
-
-        if (choice == 0){
-            System.out.println("You chose to Exit the Program");
-            
-        }
-
-
     }
 
     private static void buyticket(){
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to the but station");
+        System.out.println("Welcome to the buy station");
         System.out.println("Enter the row you would like to buy a seat in (1-3)");
         int rowchoice = input.nextInt();
-        if (rowchoice == 1){
-            System.out.println("");
+
+        System.out.println("Enter a Seat number (1-" + (rowchoice == 1? 12 : rowchoice == 2? 16 : 20) + "):");
+        int seatchoice = input.nextInt();
+
+        if (rowchoice < 1 || rowchoice > 3 || seatchoice < 1 || seatchoice > (rowchoice == 1? 12 : rowchoice == 2? 16 : 20) ){
+            System.out.println("Invalid Row or Seat Number");
+            return;
+        }
+        
+
+        int[] selectedrow = rowchoice == 1 ? rowone : rowchoice == 2 ? rowtwo : rowthree;
+
+        if (selectedrow[seatchoice - 1] == 1) {
+            System.out.println("Seat is already sold");
+            return;
         }
 
+        selectedrow[seatchoice - 1] = 1;
+            System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
+        
     }
+
+    private static void printseatingarea(){
+        
+
+    }
+
+
 }
+    
+
+    
