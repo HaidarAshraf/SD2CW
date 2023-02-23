@@ -4,6 +4,11 @@ public class Theatre{
     static int[] rowone = new int[12];
     static int[] rowtwo = new int[16];
     static int[] rowthree = new int[20];
+    static String[] seatingarearowone = new String[12];
+    static String[] seatingarearowtwo = new String[16];
+    static String[] seatingarearowthree = new String[20];
+
+    
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -100,25 +105,53 @@ public class Theatre{
         }
         
 
-        int[] selectedrow = rowchoice == 1 ? rowone : rowchoice == 2 ? rowtwo : rowthree;
+        int[] selectedrow=rowchoice==1?rowone : rowchoice==2?rowtwo : rowthree;
 
-        if (selectedrow[seatchoice - 1] == 1) {
+        if (selectedrow[seatchoice-1]==1) {
             System.out.println("Seat is already sold");
             return;
         }
 
-        selectedrow[seatchoice - 1] = 1;
+        selectedrow[seatchoice-1]=1;
             System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
         
     }
 
     private static void printseatingarea(){
+        System.out.println("***********");
+        System.out.println("** STAGE **");
+        System.out.println("***********");
+    
+        for (int i = 0; i < rowone.length; i++) {
+            if (rowone[i] == 1) {
+                seatingarearowone[i] = "X";
+            } else {
+                seatingarearowone[i] = "H";
+            }
+            System.out.print(seatingarearowone[i] + " ");
+        }
+        for (int i = 0; i < rowtwo.length; i++) {
+            if (rowtwo[i] == 1) {
+                seatingarearowtwo[i] = "X";
+            } else {
+                seatingarearowtwo[i] = "G";
+            }
+            System.out.print(seatingarearowtwo[i] + " ");
+        }
+        for (int i = 0; i < rowthree.length; i++) {
+            if (rowthree[i] == 1) {
+                seatingarearowthree[i] = "X";
+            } else {
+                seatingarearowthree[i] = "L";
+            }
+            System.out.print(seatingarearowthree[i] + " ");
+        }
+        }
         
-
+        
     }
 
 
-}
-    
+
 
     
