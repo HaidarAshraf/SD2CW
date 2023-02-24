@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class test{
+public class Theatre{
     static int[] rowone = new int[12];
     static int[] rowtwo = new int[16];
     static int[] rowthree = new int[20];
@@ -129,9 +129,8 @@ public class test{
             else {
                 seatingarearowone[i] = "O";
             }
-            
+            System.out.print(seatingarearowone[i] + " ");
         }
-        System.out.println(seatingarearowone);
         System.out.print("\n");
 
         for (int i = 0; i < rowtwo.length; i++) {
@@ -141,9 +140,9 @@ public class test{
             else {
                 seatingarearowtwo[i] = "O";
             }
+            System.out.print(seatingarearowtwo[i] + " ");
             
         }
-        System.out.println(seatingarearowtwo);
         System.out.print("\n");
 
         for (int i = 0; i < rowthree.length; i++) {
@@ -152,14 +151,42 @@ public class test{
             } 
             else {
                 seatingarearowthree[i] = "O";
-            for(String element : seatingarearowthree){
-                System.out.println(element + " ");
             }
+            System.out.print(seatingarearowthree[i] + " ");
+            
         }
-        
         System.out.print("\n");
         menu();
         }
-    }
+    
+    private static void cancelticket(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to the Cancel station");
+        System.out.println("Enter the row you would like to cancel a seat in (1-3)");
+        int rowcancelchoice = input.nextInt();
+
+        System.out.println("Enter a Seat number (1-" + (rowcancelchoice == 1? 12 : rowcancelchoice == 2? 16 : 20) + "):");
+        int seatcancelchoice = input.nextInt();
+
+        if (rowcancelchoice < 1 || rowcancelchoice > 3 || seatcancelchoice < 1 || seatcancelchoice > (rowcancelchoice == 1? 12 : rowcancelchoice == 2? 16 : 20) ){
+            System.out.println("Invalid Row or Seat Number");
+            return;
+        }
         
-}
+        
+
+
+        
+        if (selectedrow[seatcancelchoice-1]==1) {
+            System.out.println("Seat is already sold");
+            return;
+        }
+
+        selectedrow[seatcancelchoice-1]=1;
+            System.out.println("Seat " + seatcancelchoice + " in Row " + rowcancelchoice + " Purchased Successfully");
+        menu();
+    }
+
+    }
+    }
+
