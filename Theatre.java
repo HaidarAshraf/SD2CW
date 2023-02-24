@@ -114,40 +114,50 @@ public class Theatre{
 
         selectedrow[seatchoice-1]=1;
             System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
-        
+        menu();
     }
 
     private static void printseatingarea(){
-        System.out.println("***********");
-        System.out.println("** STAGE **");
-        System.out.println("***********");
-    
+        System.out.println("     ***********     ");
+        System.out.println("     *  STAGE  *     ");
+        System.out.println("     ***********     ");
+
         for (int i = 0; i < rowone.length; i++) {
             if (rowone[i] == 1) {
                 seatingarearowone[i] = "X";
-            } else {
-                seatingarearowone[i] = "H";
+            } 
+            else {
+                seatingarearowone[i] = "O";
             }
             System.out.print(seatingarearowone[i] + " ");
         }
+        System.out.print("\n");
+
         for (int i = 0; i < rowtwo.length; i++) {
             if (rowtwo[i] == 1) {
                 seatingarearowtwo[i] = "X";
-            } else {
-                seatingarearowtwo[i] = "G";
+            } 
+            else {
+                seatingarearowtwo[i] = "O";
             }
             System.out.print(seatingarearowtwo[i] + " ");
+            
         }
+        System.out.print("\n");
+
         for (int i = 0; i < rowthree.length; i++) {
             if (rowthree[i] == 1) {
                 seatingarearowthree[i] = "X";
-            } else {
-                seatingarearowthree[i] = "L";
+            } 
+            else {
+                seatingarearowthree[i] = "O";
             }
             System.out.print(seatingarearowthree[i] + " ");
+            
         }
+        System.out.print("\n");
+        menu();
         }
-        
         
     }
 
