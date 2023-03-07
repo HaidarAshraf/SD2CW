@@ -61,7 +61,7 @@ public class Theatre{
                     break;
                 case 3:
                     System.out.println("You chose to Cancel your ticket ");
-                    //self def for case
+                    cancelticket();
                     break;
                 case 4:
                     System.out.println("You chose to List available seats");
@@ -158,9 +158,44 @@ public class Theatre{
         System.out.print("\n");
         menu();
         }
+    private static void cancelticket(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to the Cancel station");
+        System.out.println("Enter the row you would like to cancel a seat in (1-3)");
+        int rowcancelchoice = input.nextInt();
+
+        System.out.println("Enter a Seat number (1-" + (rowcancelchoice == 1? 12 : rowcancelchoice == 2? 16 : 20) + "):");
+        int seatcancelchoice = input.nextInt();
+
+        if (rowcancelchoice < 1 || rowcancelchoice > 3 || seatcancelchoice < 1 || seatcancelchoice > (rowcancelchoice == 1? 12 : rowcancelchoice == 2? 16 : 20) ){
+            System.out.println("Invalid Row or Seat Number");
+            return;
+        }
         
+
+        int[] selectedcancelrow=rowcancelchoice==1?rowone : rowcancelchoice==2?rowtwo : rowthree;
+
+        if (selectedcancelrow[seatcancelchoice-1]==1){
+            selectedcancelrow[seatcancelchoice-1]=0;
+        }
+
+        else{
+            System.out.println("Seat is NOT sold");
+            System.out.println("Try Again");
+            return;
+        }
+        System.out.print("\n");
+        menu();
+    }
+    private static void showavailable(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Here are the Available Seats in each Row");
+        
+
+
     }
 
+}
 
 
 

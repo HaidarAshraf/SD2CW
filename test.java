@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Theatre{
+public class test{
     static int[] rowone = new int[12];
     static int[] rowtwo = new int[16];
     static int[] rowthree = new int[20];
@@ -61,11 +61,11 @@ public class Theatre{
                     break;
                 case 3:
                     System.out.println("You chose to Cancel your ticket ");
-                    //self def for case
+                    cancelticket();
                     break;
                 case 4:
                     System.out.println("You chose to List available seats");
-                    //self def for case
+                    showavailable();
                     break;
                 case 5:
                     System.out.println("You chose to Save to file");
@@ -158,7 +158,6 @@ public class Theatre{
         System.out.print("\n");
         menu();
         }
-    
     private static void cancelticket(){
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Cancel station");
@@ -173,20 +172,42 @@ public class Theatre{
             return;
         }
         
-        
 
+        int[] selectedcancelrow=rowcancelchoice==1?rowone : rowcancelchoice==2?rowtwo : rowthree;
 
-        
-        if (selectedrow[seatcancelchoice-1]==1) {
-            System.out.println("Seat is already sold");
-            return;
+        if (selectedcancelrow[seatcancelchoice-1]==1){
+            selectedcancelrow[seatcancelchoice-1]=0;
         }
 
-        selectedrow[seatcancelchoice-1]=1;
-            System.out.println("Seat " + seatcancelchoice + " in Row " + rowcancelchoice + " Purchased Successfully");
+        else{
+            System.out.println("Seat is NOT sold");
+            System.out.println("Try Again");
+            return;
+        }
+        System.out.print("\n");
         menu();
     }
-
+    
+    private static void showavailable(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Here are the Available Seats in each Row");
+        for (int i = 0; i <rowtwo.length; i++){
+            if (rowtwo[i]==0){
+                System.out.println("Seats Available in Row 1:"+rowtwo[i]);
+                break;
+            }
+        }
+        for (int j = 0; j <rowtwo.length; j++){
+            if (rowtwo[j]==0){
+                System.out.println("Seats Available in Row 2:"+rowtwo[j]);
+                break;
+            }
+        }
+        for (int h = 0; h <rowthree.length; h++){
+            if (rowthree[h]==0){
+                System.out.println("Seats Available in Row 3:"+rowthree[h]);
+                break;
+            }
+        }
     }
-    }
-
+}
