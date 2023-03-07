@@ -191,6 +191,7 @@ public class Theatre{
         Scanner input = new Scanner(System.in);
         System.out.println("Here are the Available Seats in each Row");
         
+        
 
 
     }

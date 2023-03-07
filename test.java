@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class test{
@@ -65,7 +66,10 @@ public class test{
                     break;
                 case 4:
                     System.out.println("You chose to List available seats");
-                    showavailable();
+                    showavailable(rowone);
+                    showavailable(rowtwo);
+                    showavailable(rowthree);
+                    menu();
                     break;
                 case 5:
                     System.out.println("You chose to Save to file");
@@ -187,27 +191,24 @@ public class test{
         System.out.print("\n");
         menu();
     }
+    private static void showavailable(int[] arr) {
+        int count = 0;
+        for (int i = 0; i<3; i++) {
+            System.out.print("Seats Available in Row " + (i+1) + ": ");
+            break;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                count++;
+                System.out.print((i + 1) + ", ");
+            }
+        }
+        if (count == 0) {
+            System.out.print("No seats available");
+        }
+        System.out.println();
     
-    private static void showavailable(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Here are the Available Seats in each Row");
-        for (int i = 0; i <rowtwo.length; i++){
-            if (rowtwo[i]==0){
-                System.out.println("Seats Available in Row 1:"+rowtwo[i]);
-                break;
-            }
-        }
-        for (int j = 0; j <rowtwo.length; j++){
-            if (rowtwo[j]==0){
-                System.out.println("Seats Available in Row 2:"+rowtwo[j]);
-                break;
-            }
-        }
-        for (int h = 0; h <rowthree.length; h++){
-            if (rowthree[h]==0){
-                System.out.println("Seats Available in Row 3:"+rowthree[h]);
-                break;
-            }
-        }
     }
 }
+
+    
