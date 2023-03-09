@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class test{
     }
     private static void menu(){
         Scanner input = new Scanner(System.in);
-        String divider = "------------------------------------------------------------------------";
+        String divider = "\n------------------------------------------------------------------------";
         System.out.println(divider);
         System.out.println("Please select an option:");
         System.out.println("1) Buy a ticket");
@@ -84,6 +84,8 @@ public class test{
                     break;
                 case 6:
                     System.out.println("You chose to Load from file");
+                    loadF();
+                    menu();
                     break;
                 case 7:
                     System.out.println("You chose to Print Ticket information and total price");
@@ -217,11 +219,20 @@ public class test{
     }
     private static void saveF(){
         try {
-            File file = new File("Exercise2.txt");
+            File file = new File("RowInfotest.txt");
             file.createNewFile();
-            FileWriter file_writer = new FileWriter("Exercise2.txt");
+            FileWriter file_writer = new FileWriter("RowInfotest.txt");
+            file_writer.write("This is the information that is saved from the rows \n The 0 Represent the Seats that are Sold \n The 1 represents the Seats that are Available \n");
             for (int i = 0; i < rowone.length; i++){
                 file_writer.write(rowone[i] + " ");
+            }
+            file_writer.write("\n");
+            for (int i = 0; i < rowtwo.length; i++){
+                file_writer.write(rowtwo[i] + " ");
+            }
+            file_writer.write("\n");
+            for (int i = 0; i < rowthree.length; i++){
+                file_writer.write(rowthree[i] + " ");
             }
             file_writer.close();
         }
@@ -229,7 +240,34 @@ public class test{
             System.out.println("Error while writing to a file.");
             e.printStackTrace();
         }
-
+    }
+    private static void loadF(){
+        File file = new File("RowInfotest.txt");
+        try {Scanner file_reader = new Scanner(file);
+            int index = 0;
+            while (file_reader.hasNextInt()) {
+                int number = file_reader.nextInt();
+                rowone[index] = number;
+                index++;
+            }
+            file_reader.close();
+            System.out.print(" \n ");
+            for (int i = 0; i < rowone.length; i++){
+                System.out.print(rowone[i] + "  ");
+            }
+            System.out.print(" \n ");
+            for (int i = 0; i < rowtwo.length; i++){
+                System.out.print(rowtwo[i] + "  ");
+            }
+            System.out.print(" \n ");
+            for (int i = 0; i < rowthree.length; i++){
+                System.out.print(rowthree[i] + "  ");
+            }
+        } catch (IOException e) {
+            System.out.println("Error while reading from a file.");
+            e.printStackTrace();
+        }
+    }
 }
 
     
