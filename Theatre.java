@@ -65,7 +65,10 @@ public class Theatre{
                     break;
                 case 4:
                     System.out.println("You chose to List available seats");
-                    //self def for case
+                    showavailable(rowone,1);
+                    showavailable(rowtwo,2);
+                    showavailable(rowthree,3);
+                    menu();
                     break;
                 case 5:
                     System.out.println("You chose to Save to file");
@@ -187,13 +190,23 @@ public class Theatre{
         System.out.print("\n");
         menu();
     }
-    private static void showavailable(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Here are the Available Seats in each Row");
-        
-        
-
-
+    private static void showavailable(int[] arr , int rownum) {
+        int count = 0;
+        for (int i = 0; i<3; i++) {
+            System.out.print("Seats Available in Row " + (rownum) + ": ");
+            break;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                count++;
+                System.out.print((i + 1) + ", ");
+            }
+        }
+        if (count == 0) {
+            System.out.print("No seats available");
+        }
+        System.out.println();
+    
     }
 
 }

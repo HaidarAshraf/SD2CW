@@ -1,5 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+
+
 
 public class test{
     static int[] rowone = new int[12];
@@ -8,6 +13,7 @@ public class test{
     static String[] seatingarearowone = new String[12];
     static String[] seatingarearowtwo = new String[16];
     static String[] seatingarearowthree = new String[20];
+    
 
     
 
@@ -66,18 +72,18 @@ public class test{
                     break;
                 case 4:
                     System.out.println("You chose to List available seats");
-                    showavailable(rowone);
-                    showavailable(rowtwo);
-                    showavailable(rowthree);
+                    showavailable(rowone,1);
+                    showavailable(rowtwo,2);
+                    showavailable(rowthree,3);
                     menu();
                     break;
                 case 5:
                     System.out.println("You chose to Save to file");
-                    //self def for case
+                    saveF();
+                    menu();
                     break;
                 case 6:
                     System.out.println("You chose to Load from file");
-                    //self def for case
                     break;
                 case 7:
                     System.out.println("You chose to Print Ticket information and total price");
@@ -191,10 +197,10 @@ public class test{
         System.out.print("\n");
         menu();
     }
-    private static void showavailable(int[] arr) {
+    private static void showavailable(int[] arr , int rownum) {
         int count = 0;
         for (int i = 0; i<3; i++) {
-            System.out.print("Seats Available in Row " + (i+1) + ": ");
+            System.out.print("Seats Available in Row " + (rownum) + ": ");
             break;
         }
         for (int i = 0; i < arr.length; i++) {
@@ -209,6 +215,21 @@ public class test{
         System.out.println();
     
     }
+    private static void saveF(){
+        try {
+            File file = new File("Exercise2.txt");
+            file.createNewFile();
+            FileWriter file_writer = new FileWriter("Exercise2.txt");
+            for (int i = 0; i < rowone.length; i++){
+                file_writer.write(rowone[i] + " ");
+            }
+            file_writer.close();
+        }
+        catch (IOException e) {
+            System.out.println("Error while writing to a file.");
+            e.printStackTrace();
+        }
+
 }
 
     
