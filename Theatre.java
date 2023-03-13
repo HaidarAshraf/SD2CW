@@ -53,7 +53,7 @@ public class Theatre{
             switch(choice){
                 case 0:
                     System.out.println("Exiting program");
-                    return;
+                    break;
                 case 1:
                     System.out.println("You chose to buy a ticket");
                     buyticket();

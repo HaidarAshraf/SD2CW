@@ -271,3 +271,10 @@ public class test{
 }
 
     
+
+
+Person person = new Person("John", "Doe", "johndoe@example.com");
+Ticket ticket = new Ticket(2, 5, 25.0, person);
+
+Ticket ticket = new Ticket(2, 5, 25.0, person);
+ticket.print();
