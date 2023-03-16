@@ -49,6 +49,6 @@ public class Ticket {
         System.out.println("Person email: " + person.getEmail());
         System.out.println("Row: " + row);
         System.out.println("Seat: " + seat);
-        System.out.println("Price: $" + price);
+        System.out.println("Price: £" + price);
     }
 }

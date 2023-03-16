@@ -13,6 +13,7 @@ public class test{
     static String[] seatingarearowone = new String[12];
     static String[] seatingarearowtwo = new String[16];
     static String[] seatingarearowthree = new String[20];
+    static String[] person = new String[12];
     
 
     
@@ -272,9 +273,3 @@ public class test{
 
     
 
-
-Person person = new Person("John", "Doe", "johndoe@example.com");
-Ticket ticket = new Ticket(2, 5, 25.0, person);
-
-Ticket ticket = new Ticket(2, 5, 25.0, person);
-ticket.print();

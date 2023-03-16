@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.util.ArrayList;
+
 
 public class Theatre{
     static int[] rowone = new int[12];
@@ -10,29 +12,16 @@ public class Theatre{
     static String[] seatingarearowone = new String[12];
     static String[] seatingarearowtwo = new String[16];
     static String[] seatingarearowthree = new String[20];
+    static ArrayList<Ticket> tickets = new ArrayList<>();
 
     
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the New Theatre");
-
-        // setting all seats to 0/free
-        for (int i = 0; i < rowone.length; i++) {
-            rowone[i] = 0;
-        }
-        for (int i = 0; i < rowtwo.length; i++) {
-            rowtwo[i] = 0;
-        }
-        for (int i = 0; i < rowthree.length; i++) {
-            rowthree[i] = 0;
-        }
         //calling menu which asks for users choice
-        menu();
-
-    }
-    private static void menu(){
-        Scanner input = new Scanner(System.in);
+        boolean Quit = false;
+        while(!Quit){
+            Scanner input = new Scanner(System.in);
         String divider = "\n------------------------------------------------------------------------";
         System.out.println(divider);
         System.out.println("Please select an option:");
@@ -48,10 +37,9 @@ public class Theatre{
         System.out.println(divider);
         System.out.println("Enter Option:");
         int choice = input.nextInt();
-
-        while(choice != 0){
             switch(choice){
                 case 0:
+                    Quit = true;
                     System.out.println("Exiting program");
                     break;
                 case 1:
@@ -71,17 +59,14 @@ public class Theatre{
                     showavailable(rowone,1);
                     showavailable(rowtwo,2);
                     showavailable(rowthree,3);
-                    menu();
                     break;
                 case 5:
                     System.out.println("You chose to Save to file");
                     saveF();
-                    menu();
                     break;
                 case 6:
                     System.out.println("You chose to Load from file");
                     loadF();
-                    menu();
                     break;
                 case 7:
                     System.out.println("You chose to Print Ticket information and total price");
@@ -96,6 +81,7 @@ public class Theatre{
                 break;
             }
         }
+
     }
 
     private static void buyticket(){
@@ -109,7 +95,6 @@ public class Theatre{
 
         if (rowchoice < 1 || rowchoice > 3 || seatchoice < 1 || seatchoice > (rowchoice == 1? 12 : rowchoice == 2? 16 : 20) ){
             System.out.println("Invalid Row or Seat Number");
-            return;
         }
         
 
@@ -117,12 +102,22 @@ public class Theatre{
 
         if (selectedrow[seatchoice-1]==1) {
             System.out.println("Seat is already sold");
-            return;
         }
 
         selectedrow[seatchoice-1]=1;
             System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
-        menu();
+
+        System.out.println("Enter your Name:");
+        String name = input.nextLine();
+        System.out.println("Enter your Surname:");
+        String surname = input.nextLine();
+        System.out.println("Enter your Email:");
+        String email = input.nextLine();
+        System.out.println("Enter the Price:");
+        double price = input.nextDouble();
+        Person person = new Person(name, surname, email);
+        Ticket ticket = new Ticket(rowchoice, seatchoice, price, person);
+        tickets.add(ticket);
     }
 
     private static void printseatingarea(){
@@ -164,7 +159,6 @@ public class Theatre{
             
         }
         System.out.print("\n");
-        menu();
         }
     private static void cancelticket(){
         Scanner input = new Scanner(System.in);
@@ -193,7 +187,10 @@ public class Theatre{
             return;
         }
         System.out.print("\n");
-        menu();
+
+        for(int i = 0; i < tickets.size(); i++){
+
+        }
     }
     private static void showavailable(int[] arr , int rownum) {
         int count = 0;
