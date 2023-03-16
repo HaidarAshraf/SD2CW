@@ -1,11 +1,14 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ListIterator;
 
 
-public class Theatre{
+public class test1{
     static int[] rowone = new int[12];
     static int[] rowtwo = new int[16];
     static int[] rowthree = new int[20];
@@ -89,12 +92,13 @@ public class Theatre{
         System.out.println("Welcome to the buy station");
         System.out.println("Enter the row you would like to buy a seat in (1-3)");
         int rowchoice = input.nextInt();
-
+ 
         System.out.println("Enter a Seat number (1-" + (rowchoice == 1? 12 : rowchoice == 2? 16 : 20) + "):");
         int seatchoice = input.nextInt();
 
         if (rowchoice < 1 || rowchoice > 3 || seatchoice < 1 || seatchoice > (rowchoice == 1? 12 : rowchoice == 2? 16 : 20) ){
             System.out.println("Invalid Row or Seat Number");
+            return;
         }
         
 
@@ -104,28 +108,37 @@ public class Theatre{
             System.out.println("Seat is already sold");
         }
 
-        selectedrow[seatchoice-1]=1;
-            System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
-
+        
+        Scanner inputs = new Scanner(System.in);
         System.out.println("Enter your Name: ");
-        String name = input.nextLine();
-        System.out.println("\n");
+        String name = inputs.nextLine();
 
         System.out.println("Enter your Surname: ");
-        String surname = input.nextLine();
-        System.out.println("\n");
+        String surname = inputs.nextLine();
 
         System.out.println("Enter your Email: ");
-        String email = input.nextLine();
-        System.out.println("\n");
+        String email = inputs.nextLine();
 
         System.out.println("Enter the Price: ");
-        double price = input.nextDouble();
+        double price = inputs.nextDouble();
         System.out.println("\n");
 
         Person person = new Person(name, surname, email);
-        Ticket ticket = new Ticket(rowchoice, seatchoice, price, person);
+        Ticket ticket = new Ticket(person, rowchoice, seatchoice, price );
         tickets.add(ticket);
+
+        selectedrow[seatchoice-1]=1;
+            System.out.println("Seat " + seatchoice + " in Row " + rowchoice + " Purchased Successfully");
+            System.out.println("\n");
+
+        System.out.println("Person name: " + name);
+        System.out.println("Person surname: " + surname);
+        System.out.println("Person email: " + email);
+        System.out.println("Row: " + rowchoice);
+        System.out.println("Seat: " + seatchoice);
+        System.out.println("Price: £" + price);
+
+        
     }
 
     private static void printseatingarea(){
@@ -167,7 +180,12 @@ public class Theatre{
             
         }
         System.out.print("\n");
-        }
+
+        
+    
+    }
+    
+
     private static void cancelticket(){
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Cancel station");
@@ -187,6 +205,7 @@ public class Theatre{
 
         if (selectedcancelrow[seatcancelchoice-1]==1){
             selectedcancelrow[seatcancelchoice-1]=0;
+            System.out.println("Seat Canceled Successfully");
         }
 
         else{
@@ -195,10 +214,11 @@ public class Theatre{
             return;
         }
         System.out.print("\n");
+        
+        
+        
 
-        for(int i = 0; i < tickets.size(); i++){
 
-        }
     }
     private static void showavailable(int[] arr , int rownum) {
         int count = 0;
@@ -270,10 +290,7 @@ public class Theatre{
             e.printStackTrace();
         }
     }
+
     
 
 }
-
-
-
-    
