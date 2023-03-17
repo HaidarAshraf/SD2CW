@@ -1,6 +1,6 @@
 This is the information that is saved from the rows 
  The 0 Represent the Seats that are Sold 
  The 1 represents the Seats that are Available 
-1 0 0 0 0 0 0 0 0 0 0 0 
-1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 

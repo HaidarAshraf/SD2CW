@@ -73,7 +73,7 @@ public class test1{
                     break;
                 case 7:
                     System.out.println("You chose to Print Ticket information and total price");
-                    //self def for case
+                    showticketinfo();
                     break;
                 case 8:
                     System.out.println("You chose to Sort tickets by price");
@@ -153,6 +153,7 @@ public class test1{
             else {
                 seatingarearowone[i] = "O";
             }
+            
             System.out.print(seatingarearowone[i] + " ");
         }
         System.out.print("\n");
@@ -181,8 +182,6 @@ public class test1{
         }
         System.out.print("\n");
 
-        
-    
     }
     
 
@@ -214,6 +213,7 @@ public class test1{
             return;
         }
         System.out.print("\n");
+
         
         
         
@@ -289,6 +289,10 @@ public class test1{
             System.out.println("Error while reading from a file.");
             e.printStackTrace();
         }
+    }
+    private static void showticketinfo(){
+        System.out.println(Ticket.gettickets());
+
     }
 
     

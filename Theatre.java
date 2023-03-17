@@ -70,11 +70,11 @@ public class Theatre{
                     break;
                 case 7:
                     System.out.println("You chose to Print Ticket information and total price");
-                    //self def for case
+                    showticketinfo();
                     break;
                 case 8:
                     System.out.println("You chose to Sort tickets by price");
-                    //self def for case
+                    
                     break;
             default:
                 System.out.println("Invalid Choice");
@@ -124,7 +124,8 @@ public class Theatre{
         System.out.println("\n");
 
         Person person = new Person(name, surname, email);
-        Ticket ticket = new Ticket(rowchoice, seatchoice, price, person);
+        Ticket ticket = new Ticket(person, rowchoice, seatchoice, price);
+        Ticket.settick(ticket);
         tickets.add(ticket);
     }
 
@@ -143,6 +144,7 @@ public class Theatre{
             System.out.print(seatingarearowone[i] + " ");
         }
         System.out.print("\n");
+
 
         for (int i = 0; i < rowtwo.length; i++) {
             if (rowtwo[i] == 1) {
@@ -270,9 +272,13 @@ public class Theatre{
             e.printStackTrace();
         }
     }
-    
+    private static void showticketinfo(){
+        System.out.println(tickets.get(1));
+
+    }
 
 }
+
 
 
 
